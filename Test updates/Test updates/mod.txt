@@ -1,0 +1,22 @@
+{
+    "name" : "Test updates",
+    "author" : "dzed baradzed",
+    "version" : "1",
+    "blt_version" : 2,
+    "color" : "130 171 237",
+    "hooks" : [
+        {
+            "hook_id" : "lib/managers/menumanager",
+            "script_path" : "nothinghere.lua"
+        }
+    ],
+    "updates" : [
+        {
+            "identifier" : "dzedbaradzed_testupdates",
+            "host": {
+                "meta": "https://example.com/my_meta.json",
+                "download": "https://example.com/download.zip",
+            }
+        }
+    ]
+}
