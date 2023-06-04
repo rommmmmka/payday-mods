@@ -23,8 +23,8 @@
         {
             "identifier" : "dzedbaradzed_onlyodfilter",
             "host": {
-                "meta": "https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/meta.json",
+                "meta": "https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/meta.json"
             }
         }
-    ],
+    ]
 }

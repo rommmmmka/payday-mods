@@ -15,9 +15,8 @@
         {
             "identifier" : "dzedbaradzed_sortmusiclist",
             "host": {
-                "meta": "https://github.com/rommmmmka/payday-mods/raw/main/Sort%20Music%20List/meta.json",
-                "download": "https://github.com/rommmmmka/payday-mods/raw/main/Sort%20Music%20List/Sort%20Music%20List.zip",
+                "meta": "https://github.com/rommmmmka/payday-mods/raw/main/Sort%20Music%20List/meta.json"
             }
         }
-    ],
+    ]
 }
