@@ -2,7 +2,7 @@
     "name" : "Sort Contract Filter List",
     "description" : "Sorts contracts in filter list in alphabetical order",
     "author" : "dzed baradzed",
-    "version" : "1.3",
+    "version" : "1.2",
     "blt_version" : 2,
     "color" : "130 171 237",
     "hooks" : [
