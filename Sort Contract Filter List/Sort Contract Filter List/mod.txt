@@ -1,0 +1,23 @@
+{
+    "name" : "Sort Contract Filter List",
+    "description" : "Sorts contracts in filter list in alphabetical order",
+    "author" : "dzed baradzed",
+    "version" : "1.3",
+    "blt_version" : 2,
+    "color" : "130 171 237",
+    "hooks" : [
+        {
+            "hook_id" : "lib/managers/menumanager",
+            "script_path" : "menumanager.lua"
+        }
+    ],
+    "updates" : [
+        {
+            "identifier" : "dzedbaradzed_sortcontractfilterlist",
+            "host": {
+                "meta": "https://github.com/rommmmmka/payday-mods/raw/main/Sort%20Contract%20Filter%20List/meta.json",
+                "download": "https://github.com/rommmmmka/payday-mods/raw/main/Sort%20Contract%20Filter%20List/Sort%20Contract%20Filter%20List.zip",
+            }
+        }
+    ],
+}
