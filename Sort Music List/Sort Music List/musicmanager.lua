@@ -1,4 +1,4 @@
-Hooks:PostHook(MusicManager, "init", "SortMusicListMod", function(self)
+Hooks:PostHook(MusicManager, "init", "dzedbaradzed_sortmusiclist_init", function(self)
     table.sort(tweak_data.music.track_list, function(a,b)
         return managers.localization:text("menu_jukebox_" .. a.track) < managers.localization:text("menu_jukebox_" .. b.track)
     end)
