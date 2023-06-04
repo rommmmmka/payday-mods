@@ -1,4 +1,4 @@
-# "\"Allow only OD lobbies\" filter"
+# "Allow only OD lobbies" filter
 Changes useless "Allow OD lobbies" to "Allow only OD lobbies" because no one plays on death sentence without one down
 [ModWorkshop](https://modworkshop.net/mod/22093)
 [Direct link](https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/Only%20OD%20Filter.zip)
