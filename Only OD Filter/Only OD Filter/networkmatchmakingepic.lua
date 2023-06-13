@@ -1,11 +1,11 @@
-function NetworkMatchMakingSTEAM:search_lobby(friends_only, no_filters)
+function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 	self._search_friends_only = friends_only
 
 	if not self:_has_callback("search_lobby") then
 		return
 	end
 
-	-- Lines 463-469
+	-- Lines 421-427
 	local function validated_value(lobby, key)
 		local value = lobby:key_value(key)
 
@@ -19,7 +19,7 @@ function NetworkMatchMakingSTEAM:search_lobby(friends_only, no_filters)
 	if friends_only then
 		self:get_friends_lobbies()
 	else
-		-- Lines 474-521
+		-- Lines 432-472
 		local function refresh_lobby()
 			if not self.browser then
 				return
@@ -34,12 +34,7 @@ function NetworkMatchMakingSTEAM:search_lobby(friends_only, no_filters)
 			if lobbies then
 				for _, lobby in ipairs(lobbies) do
 					if self._difficulty_filter == 0 or self._difficulty_filter == tonumber(lobby:key_value("difficulty")) then
-						table.insert(info.room_list, {
-							owner_id = lobby:key_value("owner_id"),
-							owner_name = lobby:key_value("owner_name"),
-							room_id = lobby:id(),
-							owner_level = lobby:key_value("owner_level")
-						})
+						table.insert(info.room_list, self:_make_room_info(lobby))
 
 						local attributes_data = {
 							numbers = self:_lobby_to_numbers(lobby),
@@ -154,6 +149,5 @@ function NetworkMatchMakingSTEAM:search_lobby(friends_only, no_filters)
 		else
 			self.browser:refresh()
 		end
-        
 	end
 end
