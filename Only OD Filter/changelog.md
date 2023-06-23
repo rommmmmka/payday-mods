@@ -3,6 +3,9 @@ Changes useless "Allow OD lobbies" to "Allow only OD lobbies" because no one pla
 
 [ModWorkshop](https://modworkshop.net/mod/22093) | [Direct link](https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/Only%20OD%20Filter.zip)
 
+## 1.4
+* Fixed crash when opening crime.net after new update
+
 ## 1.3
 * Added support of Epic Games matchmaking
 

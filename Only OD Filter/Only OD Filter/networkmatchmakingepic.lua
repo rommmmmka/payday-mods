@@ -5,27 +5,12 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 		return
 	end
 
-	-- Lines 421-427
-	local function validated_value(lobby, key)
-		local value = lobby:key_value(key)
-
-		if value ~= "value_missing" and value ~= "value_pending" then
-			return value
-		end
-
-		return nil
-	end
-
 	if friends_only then
 		self:get_friends_lobbies()
 	else
-		-- Lines 432-472
+		-- Lines 443-480
 		local function refresh_lobby()
-			if not self.browser then
-				return
-			end
-
-			local lobbies = self.browser:lobbies()
+			local lobbies = LobbyBrowser:lobbies()
 			local info = {
 				room_list = {},
 				attribute_list = {}
@@ -39,13 +24,13 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 						local attributes_data = {
 							numbers = self:_lobby_to_numbers(lobby),
 							mutators = self:_get_mutators_from_lobby(lobby),
-							crime_spree = tonumber(validated_value(lobby, "crime_spree")),
-							crime_spree_mission = validated_value(lobby, "crime_spree_mission"),
-							mods = validated_value(lobby, "mods"),
-							one_down = tonumber(validated_value(lobby, "one_down")),
-							skirmish = tonumber(validated_value(lobby, "skirmish")),
-							skirmish_wave = tonumber(validated_value(lobby, "skirmish_wave")),
-							skirmish_weekly_modifiers = validated_value(lobby, "skirmish_weekly_modifiers")
+							crime_spree = tonumber(lobby:key_value("crime_spree")),
+							crime_spree_mission = lobby:key_value("crime_spree_mission"),
+							mods = lobby:key_value("mods"),
+							one_down = tonumber(lobby:key_value("one_down")),
+							skirmish = tonumber(lobby:key_value("skirmish")),
+							skirmish_wave = tonumber(lobby:key_value("skirmish_wave")),
+							skirmish_weekly_modifiers = lobby:key_value("skirmish_weekly_modifiers")
 						}
 
 						table.insert(info.attribute_list, attributes_data)
@@ -56,8 +41,8 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 			self:_call_callback("search_lobby", info)
 		end
 
-		self.browser = LobbyBrowser(refresh_lobby, function ()
-		end)
+		LobbyBrowser:set_callbacks(refresh_lobby)
+
 		local interest_keys = {
 			"owner_id",
 			"owner_name",
@@ -78,8 +63,8 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 			table.insert(interest_keys, self._BUILD_SEARCH_INTEREST_KEY)
 		end
 
-		self.browser:set_interest_keys(interest_keys)
-		self.browser:set_distance_filter(self._distance_filter)
+		LobbyBrowser:set_interest_keys(interest_keys)
+		LobbyBrowser:set_distance_filter(self._distance_filter)
 
 		local use_filters = not no_filters
 
@@ -87,26 +72,26 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 			use_filters = false
 		end
 
-		self.browser:set_lobby_filter(self._BUILD_SEARCH_INTEREST_KEY, "true", "equal")
+		LobbyBrowser:set_lobby_filter(self._BUILD_SEARCH_INTEREST_KEY, "true", "equal")
 
 		local filter_value, filter_type = self:get_modded_lobby_filter()
 
-		self.browser:set_lobby_filter("mods", filter_value, filter_type)
+		LobbyBrowser:set_lobby_filter("mods", filter_value, filter_type)
 
 		local filter_value, filter_type = self:get_allow_mods_filter()
 
-		self.browser:set_lobby_filter("allow_mods", filter_value, filter_type)
-		self.browser:set_lobby_filter("one_down", Global.game_settings.search_one_down_lobbies and 1 or 0, "equalto_or_greater_than")
+		LobbyBrowser:set_lobby_filter("allow_mods", filter_value, filter_type)
+		LobbyBrowser:set_lobby_filter("one_down", Global.game_settings.search_one_down_lobbies and 1 or 0, "equalto_or_greater_than")
 
 		if use_filters then
-			self.browser:set_lobby_filter("min_level", managers.experience:current_level(), "equalto_less_than")
+			LobbyBrowser:set_lobby_filter("min_level", managers.experience:current_level(), "equalto_less_than")
 
 			if Global.game_settings.search_appropriate_jobs then
 				local min_ply_jc = managers.job:get_min_jc_for_player()
 				local max_ply_jc = managers.job:get_max_jc_for_player()
 
-				self.browser:set_lobby_filter("job_class_min", min_ply_jc, "equalto_or_greater_than")
-				self.browser:set_lobby_filter("job_class_max", max_ply_jc, "equalto_less_than")
+				LobbyBrowser:set_lobby_filter("job_class_min", min_ply_jc, "equalto_or_greater_than")
+				LobbyBrowser:set_lobby_filter("job_class_max", max_ply_jc, "equalto_less_than")
 			end
 		end
 
@@ -121,33 +106,28 @@ function NetworkMatchMakingEPIC:search_lobby(friends_only, no_filters)
 					min_level = math.max(min_level, 0)
 				end
 
-				self.browser:set_lobby_filter("crime_spree", min_level, "equalto_or_greater_than")
+				LobbyBrowser:set_lobby_filter("crime_spree", min_level, "equalto_or_greater_than")
 			elseif Global.game_settings.gamemode_filter == "skirmish" then
 				local min = SkirmishManager.LOBBY_NORMAL
 
-				self.browser:set_lobby_filter("skirmish", min, "equalto_or_greater_than")
-				self.browser:set_lobby_filter("skirmish_wave", Global.game_settings.skirmish_wave_filter or 99, "equalto_less_than")
+				LobbyBrowser:set_lobby_filter("skirmish", min, "equalto_or_greater_than")
+				LobbyBrowser:set_lobby_filter("skirmish_wave", Global.game_settings.skirmish_wave_filter or 99, "equalto_less_than")
 			elseif Global.game_settings.gamemode_filter == GamemodeStandard.id then
-				self.browser:set_lobby_filter("crime_spree", -1, "equalto_less_than")
-				self.browser:set_lobby_filter("skirmish", 0, "equalto_less_than")
+				LobbyBrowser:set_lobby_filter("crime_spree", -1, "equalto_less_than")
+				LobbyBrowser:set_lobby_filter("skirmish", 0, "equalto_less_than")
 			end
 		end
 
 		if use_filters then
 			for key, data in pairs(self._lobby_filters) do
 				if data.value and data.value ~= -1 then
-					self.browser:set_lobby_filter(data.key, data.value, data.comparision_type)
+					LobbyBrowser:set_lobby_filter(data.key, data.value, data.comparision_type)
 					print(data.key, data.value, data.comparision_type)
 				end
 			end
 		end
 
-		self.browser:set_max_lobby_return_count(self._lobby_return_count)
-
-		if Global.game_settings.playing_lan then
-			self.browser:refresh_lan()
-		else
-			self.browser:refresh()
-		end
+		LobbyBrowser:set_max_lobby_return_count(self._lobby_return_count)
+		LobbyBrowser:refresh()
 	end
 end
