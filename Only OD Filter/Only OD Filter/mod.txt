@@ -1,18 +1,14 @@
 {
     "name" : "\"Only OD\" Filter",
-    "description" : "Changes useless \"Allow OD lobbies\" filter to \"Allow ONLY OD lobbies\" because no one plays on death sentence without one down",
+    "description" : "Changes stupid  \"Allow OD lobbies\" filter to \"Allow ONLY OD lobbies\" because why would you play on death sentence without one down",
     "author" : "dzed baradzed",
-    "version" : "1.5",
+    "version" : "1.6",
     "blt_version" : 2,
     "color" : "130 171 237",
     "hooks" : [
         {
             "hook_id" : "lib/network/matchmaking/networkmatchmakingepic",
             "script_path" : "networkmatchmakingepic.lua"
-        },
-        {
-            "hook_id" : "lib/managers/menumanager",
-            "script_path" : "menumanager.lua"
         },
         {   
             "hook_id" : "lib/managers/localizationmanager",
