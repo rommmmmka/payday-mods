@@ -2,7 +2,7 @@
     "name" : "\"Only OD\" Filter",
     "description" : "Changes useless \"Allow OD lobbies\" filter to \"Allow ONLY OD lobbies\" because no one plays on death sentence without one down",
     "author" : "dzed baradzed",
-    "version" : "1.4",
+    "version" : "1.5",
     "blt_version" : 2,
     "color" : "130 171 237",
     "hooks" : [
