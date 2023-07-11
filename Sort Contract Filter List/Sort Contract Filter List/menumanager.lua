@@ -1,6 +1,8 @@
-Hooks:PostHook(MenuManager, "init", "dzedbaradzed_sortcontractfilterlist_init", function(self)
-    table.sort(tweak_data.narrative._jobs_index, function(a,b)
-        return tweak_data.narrative:create_job_name(a) < tweak_data.narrative:create_job_name(b)
+Hooks:PostHook(MenuCrimeNetFiltersInitiator, "add_filters", "dzedbaradzed_sortcontractfilterlist", function(self, node)
+    table.sort(node:item("job_id_filter")._all_options, function(a, b)
+        if a._parameters.value == -1 or b._parameters.value == -1 then
+            return a._parameters.value < b._parameters.value
+        end
+        return a._parameters.text_id < b._parameters.text_id
     end)
-    tweak_data.narrative:set_job_wrappers()
 end)

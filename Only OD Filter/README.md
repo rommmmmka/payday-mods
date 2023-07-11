@@ -1,13 +1,10 @@
 # "Allow only OD lobbies" filter
-Changes useless "Allow OD lobbies" to "Allow only OD lobbies" because no one plays on death sentence without one down
+Changes stupid  "Allow OD lobbies" to "Allow **ONLY** OD lobbies" because why would you play on death sentence without one down
 
 [ModWorkshop](https://modworkshop.net/mod/22093) | [Direct link](https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/Only%20OD%20Filter.zip)
 
-## 1.5
-* Fixed crash when opening crime.net after update
-
-## 1.4
-* Fixed crash when opening crime.net after update
+## 1.4 - 1.6
+* Fixed crashes that appeared after new game updates
 
 ## 1.3
 * Added support of Epic Games matchmaking
@@ -16,7 +13,7 @@ Changes useless "Allow OD lobbies" to "Allow only OD lobbies" because no one pla
 * Added auto-update in case something breaks again
 
 ## 1.1
-* Fixed compatibility issues with new versions of the game
+* Fixed bugs that appeared after new game updates
 
 ## 1.0
 * Initial release
