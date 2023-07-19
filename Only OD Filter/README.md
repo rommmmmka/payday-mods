@@ -1,7 +1,10 @@
 # "Allow only OD lobbies" filter
-Changes stupid  "Allow OD lobbies" to "Allow ***ONLY*** OD lobbies" because why would you play on death sentence without one down
+Changes stupid  "Allow OD lobbies" filter to "OD lobbies ***ONLY***" because why would you even consider to play without one down?
 
 [ModWorkshop](https://modworkshop.net/mod/22093) | [Direct link](https://github.com/rommmmmka/payday-mods/raw/main/Only%20OD%20Filter/Only%20OD%20Filter.zip)
+
+## 1.7
+* Small text change
 
 ## 1.4 - 1.6
 * Fixed crashes that appeared after new game updates

@@ -1,8 +1,8 @@
 {
     "name" : "\"Only OD\" Filter",
-    "description" : "Changes stupid  \"Allow OD lobbies\" filter to \"Allow ONLY OD lobbies\" because why would you play on death sentence without one down",
+    "description" : "Changes stupid  \"Allow OD lobbies\" filter to \"OD lobbies ONLY\" because why would you even consider to play without one down?",
     "author" : "dzed baradzed",
-    "version" : "1.6",
+    "version" : "1.7",
     "blt_version" : 2,
     "color" : "130 171 237",
     "hooks" : [
