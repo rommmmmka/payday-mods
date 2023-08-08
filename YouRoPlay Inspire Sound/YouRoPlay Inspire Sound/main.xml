@@ -1,0 +1,6 @@
+<mod name="YouRoPlay Inspire Sound" author="dzed baradzed" min_lib_ver="4.88">
+	<AssetUpdates id="43413" version="1.0" provider="modworkshop"/>
+	<Sounds directory="sounds">
+		<sound id="f36x_any" path="inspire.ogg"/>
+	</Sounds>
+</mod>
