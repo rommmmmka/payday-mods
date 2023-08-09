@@ -1,0 +1,33 @@
+{
+	"menu_id" : "dzedbaradzed_unabombermanifesto_menu",
+	"parent_menu_id" : "blt_options",
+	"title" : "dzedbaradzed_unabombermanifesto_menu_title",
+	"description" : "dzedbaradzed_unabombermanifesto_menu_desc",
+	"back_callback" : "dzedbaradzed_unabombermanifesto_menu_callback",
+	"items" : [
+        {
+			"type" : "multiple_choice",
+			"id" : "dzedbaradzed_unabombermanifesto_type",
+            "title" : "dzedbaradzed_unabombermanifesto_type_title",
+            "description" : "dzedbaradzed_unabombermanifesto_type_desc",
+			"callback" : "dzedbaradzed_unabombermanifesto_type_callback",
+			"items" : [
+				"dzedbaradzed_unabombermanifesto_type_1",
+				"dzedbaradzed_unabombermanifesto_type_2",
+				"dzedbaradzed_unabombermanifesto_type_3"
+			],
+            "value": "type"
+		},
+		{
+			"type" : "slider",
+			"id" : "dzedbaradzed_unabombermanifesto_font",
+			"title" : "dzedbaradzed_unabombermanifesto_font_title",
+			"description" : "dzedbaradzed_unabombermanifesto_font_desc",
+			"callback" : "dzedbaradzed_unabombermanifesto_font_callback",
+			"value" : "font",
+			"min" : 10,
+			"max" : 50,
+			"step" : 1
+		}
+	]
+}

@@ -1,18 +1,22 @@
 {
     "name" : "Unabomber Manifesto over legal text",
-    "description" : "Replaces legal text with the Unabomber Manifesto introduction",
+    "description" : "The Industrial Revolution and its consequences have been a disaster for the human race",
     "author" : "dzed baradzed",
-    "version" : "1",
+    "version" : "1.1",
     "blt_version" : 2,
     "color" : "130 171 237",
     "hooks" : [
         {   
             "hook_id" : "lib/states/bootupstate",
-            "script_path" : "bootupstate.lua"
-        }
+            "script_path" : "lua/bootupstate.lua"
+        },
         {   
             "hook_id" : "lib/managers/localizationmanager",
-            "script_path" : "localizationmanager.lua"
+            "script_path" : "lua/localizationmanager.lua"
+        },
+        {   
+            "hook_id" : "lib/managers/menumanager",
+            "script_path" : "lua/menumanager.lua"
         }
     ],
     "updates" : [
